@@ -1,7 +1,9 @@
 import type { MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { MantineProvider, createEmotionCache } from '@mantine/core';
+import { MantineProvider, createEmotionCache, Loader, LoadingOverlay } from '@mantine/core';
 import { StylesPlaceholder } from '@mantine/remix';
+import { useEffect, useMemo, useState } from 'react';
+import { Translator } from './translation';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -11,9 +13,21 @@ export const meta: MetaFunction = () => ({
 
 createEmotionCache({ key: 'mantine' });
 
+const Wrapper = () => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+
+    if (ready) return;
+    Translator.set_locale(window.navigator.language || 'en-US').then(() => setReady(true));
+
+  }, []);
+
+  return ready ? <Outlet /> : <LoadingOverlay visible={true} />;
+}
+
 export default function App() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ primaryColor: 'pink' }}>
       <html lang="en">
         <head>
           <StylesPlaceholder />
@@ -21,7 +35,7 @@ export default function App() {
           <Links />
         </head>
         <body>
-          <Outlet />
+          <Wrapper />
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
