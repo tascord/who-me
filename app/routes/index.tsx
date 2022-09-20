@@ -56,7 +56,7 @@ export default function Index() {
       <Stack justify="center" align="center" sx={{ height: '100vh' }}>
         <Card withBorder radius="md" p="md" sx={{ width: '40rem', maxWidth: '85vw' }}>
           <Card.Section sx={{ position: 'relative' }}>
-            <Image src={data.banner} height={180} />
+            <Image src={data.banner} height={180} alt={''} />
             <Group px="md" sx={{ position: 'absolute', marginTop: '-2.5rem', width: '100%' }} position="apart">
               <Box id="AV" sx={{ width: '5rem', height: '5rem', borderRadius: 1000, background: data.ring && `url('https://pride.dev/api/flags/${data.ring.id}/SVG')`, padding: data.ring ? 5 : 0, transform: data.ring && `rotate(${data.ring.rotation}deg)` }}>
                 <Avatar src={data.avatar} color="orange" radius={1000} sx={{ width: '100%', height: '100%', transform: data.ring && `rotate(-${data.ring.rotation}deg)` }} />
