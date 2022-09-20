@@ -1,6 +1,7 @@
 import { createStyles, Image, Container, Title, Button, Group, Text, List, ThemeIcon } from '@mantine/core';
 import { Link } from '@remix-run/react';
 import { IconBrandGithub, IconCheck } from '@tabler/icons';
+import Translate, { Translator } from '~/translation';
 
 const useStyles = createStyles((theme) => ({
     inner: {
@@ -63,10 +64,14 @@ export function Hero() {
                 <div className={classes.inner}>
                     <div className={classes.content}>
                         <Title className={classes.title}>
-                            A space <br /> <Text component='span' className={classes.highlight}>tailor made</Text> for someone like you
+                            {
+                                Translator.get('meta.hero.catch.1')
+                                    .split(/[\[\]]/)
+                                    .map((part, index) => (index % 2 === 0 ? part : <Text component='span' className={classes.highlight}>{part}</Text>))
+                            }
                         </Title>
                         <Text color="dimmed" mt="md">
-                            make a profile that's as unique as you are, display all your favourite things, and share your most real self with the world.
+                            <Translate children="meta.hero.catch.2" />
                         </Text>
 
                         <List
@@ -81,16 +86,18 @@ export function Hero() {
                             }
                         >
                             <List.Item>
-                                <b>Anonymous</b>&nbsp;– we don't store nor really care about any personal information, so you can be yourself freely.
+                                <b><Translate children="meta.hero.feature.1.title" /></b>&nbsp;–
+                                <Translate children="meta.hero.feature.1.text" />
                             </List.Item>
                             <List.Item>
-                                <b>Free + open source</b>&nbsp;– never pay for anything, and feel free to change things you don't like
+                                <b><Translate children="meta.hero.feature.2.title" /></b>&nbsp;–
+                                <Translate children="meta.hero.feature.2.text" />
                             </List.Item>
                         </List>
 
                         <Group mt={30}>
                             <Button component={Link} to="/create" radius="xl" size="md" className={classes.control}>
-                                Create
+                                <Translate children="meta.cta.1" />
                             </Button>
                             <Button component="a" href="https://github.com/tascord/who-me" target="_blank" variant="default" radius="xl" size="md" className={classes.control}>
                                 <IconBrandGithub />
