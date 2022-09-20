@@ -1,3 +1,7 @@
 "key","translation","context"
 "user.avatar.default","Avatar of %s","Alt text of avatar without ring"
-"user.avatar.ring","Avatar of %s with %s ring","Alt text of avatar with ring"
+"user.avatar.ring","Avatar of %s with %s flag","Alt text of avatar with ring (pride flag)"
+"user.banner","Banner of %s","Alt text of user banner"
+"user.location","From %s","Alt text of location"
+"user.flags","Flags","Alt text of flag list"
+"user.flags.flag","%s flag","Alt text of specific flag from list"
