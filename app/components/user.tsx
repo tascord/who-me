@@ -1,7 +1,7 @@
 import { Card, Image, Group, Text, Avatar, ThemeIcon, MantineColor, Box, Divider } from "@mantine/core";
 import { IconBrandGithub, IconBrandTwitter, IconFlag, IconMapPin, IconPin, IconPinned, TablerIcon } from "@tabler/icons";
 import { Translator } from "~/translation";
-import type { SocialLink, User as ApiUser } from "../backend/user.server";
+import type { SocialLink, VisibleUser } from "../backend/user.server";
 
 const SocialIcons: { [key in SocialLink]: TablerIcon } = {
   'github': IconBrandGithub,
@@ -18,7 +18,7 @@ const SocialColours: { [key in SocialLink]: MantineColor } = {
   'twitter': 'blue'
 }
 
-export default function User({ data }: { data: ApiUser }) {
+export default function Profile({ data }: { data: Omit<VisibleUser, 'id'> }) {
   return (
     <Card withBorder radius="md" p="md" sx={{ width: '40rem', maxWidth: '85vw' }}>
       <Card.Section sx={{ position: 'relative' }}>
