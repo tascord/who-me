@@ -1,0 +1,3 @@
+"key","translation","context"
+"user.avatar.default","Avatar of %s","Alt text of avatar without ring"
+"user.avatar.ring","Avatar of %s with %s ring","Alt text of avatar with ring"
