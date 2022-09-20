@@ -7,7 +7,7 @@
 "meta.hero.feature.2.text","never pay for anything and feel free to change things you don't like.","Hero feature 2 text"
 "meta.cta.1","Create","Create button text"
 "user.avatar.default","Avatar of %s","Alt text of avatar without ring"
-"user.avatar.ring","Avatar of %s with %s ring","Alt text of avatar with ring (pride flag)"
+"user.avatar.ring","Avatar of %s with %s flag","Alt text of avatar with ring (pride flag)"
 "user.banner","Banner of %s","Alt text of user banner"
 "user.location","From %s","Alt text of location"
 "user.flags","Flags","Alt text of flag list"
