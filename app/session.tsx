@@ -4,12 +4,12 @@ const { getSession, commitSession, destroySession } =
   createCookieSessionStorage({
     cookie: {
       name: "__session",
-      domain: "remix.run",
+      // domain: "remix.run",
       httpOnly: true,
       maxAge: 60,
       path: "/",
       sameSite: "lax",
-      secure: true,
+      secure: false,
     },
   });
 

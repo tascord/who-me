@@ -3,7 +3,7 @@ import { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { User, VisibleUser } from "~/backend/user.server";
 import { Translator } from "~/translation";
-import Profile from "~/components/user";
+import Profile from "~/components/profile";
 
 export const loader: LoaderFunction = ({ params }) => new Promise(r => User.get(params.id!).then(r).catch(() => r(null)));
 

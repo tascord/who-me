@@ -2,9 +2,10 @@ class TranslationCache {
     private _cache: { key: string, translation: string }[] = [];
 
     public get(key: string, ...args: string[]): string {
+        // console.log('[t] ' + key + ' (' + args.join(', ') + ')');
         const translation = this._cache.find(k => k.key === key)?.translation;
         if (!translation) return key;
-        return translation.replace(/%s/g, () => title(args.shift() ?? ''));
+        return translation.replace(/%s/g, () => title(args.shift() || ''));
     }
 
     public set_locale(locale: string) {
@@ -27,5 +28,5 @@ export default function Translate({ children, args }: { children: string, args?:
 }
 
 export const title = (text: string) => {
-    return text.split(/[_\-. ]/g).map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+    return text.split(/[_\-. ]/g).map(word => !word ? '' : word[0].toUpperCase() + word.slice(1)).join(' ');
 }

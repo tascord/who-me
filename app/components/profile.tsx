@@ -1,7 +1,9 @@
-import { Card, Image, Group, Text, Avatar, ThemeIcon, MantineColor, Box, Divider } from "@mantine/core";
+import { Card, Image, Group, Text, Avatar, ThemeIcon, MantineColor, Box, Divider, Textarea } from "@mantine/core";
 import { IconBrandGithub, IconBrandTwitter, IconFlag, IconMapPin, IconPin, IconPinned, TablerIcon } from "@tabler/icons";
 import { Translator } from "~/translation";
 import type { SocialLink, VisibleUser } from "../backend/user.server";
+
+export const bioProps = { readOnly: true, maxLength: 280, wrap: "hard", cols: 20 };
 
 const SocialIcons: { [key in SocialLink]: TablerIcon } = {
   'github': IconBrandGithub,
@@ -49,7 +51,7 @@ export default function Profile({ data }: { data: Omit<VisibleUser, 'id'> }) {
       {
         data.bio && (
           <Card.Section p="md">
-            <Text size="md" weight={500} children={data.bio} />
+            <Textarea {...bioProps} variant="unstyled" value={data.bio} />
           </Card.Section>
         )
       }

@@ -70,7 +70,7 @@ export class User {
 
         username = username.toLowerCase();
 
-        const existing = db.user.findUnique({ where: { username } });
+        const existing = await db.user.findUnique({ where: { username } });
         if (existing !== null) throw 'someone already has that name';
 
         if (password.length < 5) throw 'password has to be least 5 characters long';
@@ -136,5 +136,22 @@ export class User {
 
         return new User(prisma_user);
 
+    }
+
+    public visible(): VisibleUser {
+        return {
+            id: this.id,
+            name: this.name,
+            username: this.username,
+            banner: this.banner,
+            avatar: this.avatar,
+            bio: this.bio,
+            location: this.location,
+            color: this.color,
+            ring: this.ring,
+            pronouns: this.pronouns,
+            flags: this.flags,
+            links: this.links,
+        }
     }
 }
